@@ -13,20 +13,22 @@ def serialize_animal(animal_obj):
     animal_diet = animal_obj.get('characteristics').get('diet')
     animal_locations = ', '.join(list(animal_obj.get('locations')))
     animal_type = animal_obj.get('characteristics').get('type')
+    animal_top_speed = animal_obj.get('characteristics').get('top_speed')
 
     output = ''
-    output += '<li class=\"cards__item\">'
+    output += '<li class="cards__item">'
     if animal_name:
         output += f'<div class="card__title">{animal_name}</div>\n'
-        output += '<p class="card__text">'
+    output += '<div class="card__text">\n<ul class="card__list">\n'
     if animal_diet:
-        output += f'<strong>Diet:</strong> {animal_diet}<br/>\n'
+        output += f'  <li class="card__list-item"><strong>Diet:</strong> {animal_diet}</li>\n'
     if animal_locations:
-        output += f'<strong>Location:</strong> {animal_locations}<br/>\n'
+        output += f'  <li class="card__list-item"><strong>Location:</strong> {animal_locations}</li>\n'
     if animal_type:
-        output += f'<strong>Type:</strong> {animal_type}<br/>\n'
-    output += '</p>\n'
-    output += '</li>\n'
+        output += f'  <li class="card__list-item"><strong>Type:</strong> {animal_type}</li>\n'
+    if animal_top_speed:
+        output += f'  <li class="card__list-item"><strong>Top Speed:</strong> {animal_top_speed}</li>\n'
+    output += '</ul>\n</div>\n</li>\n'
 
     return output
 
